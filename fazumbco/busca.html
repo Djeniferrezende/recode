@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/busca.css">
+    <title>Document</title>
+</head>
+<body>
+   <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+
+class App extends React.Component{
+    constructor(){
+        super()
+        this.state = {
+            profissional: "",
+            servico:"",
+            data:"",
+            local:"",
+            detalhe:""
+
+        }
+        }
+        alterarProfissional = e =>{
+            this.setState({profissional : e.target.value})
+          //  console.log(this.state.profissional)
+        }
+         alterarServico = e =>{
+            this.setState({servico : e.target.value})
+         //  console.log(this.state.profissional)
+        }
+         alterarData = e =>{
+            this.setState({data : e.target.value})
+         //   console.log(this.state.data)
+        }
+         alterarLocal = e =>{
+            this.setState({local: e.target.value})
+          //  console.log(this.state.local)
+        }
+         alterarDetalhe = e =>{
+            this.setState({detalhe : e.target.value})
+
+           // console.log(this.state.detalhe)
+        }
+
+        submeterForm = e =>{
+        console.log("Profissional: " + this.state.profissional)
+        console.log("Serviço: " + this.state.servico)
+        console.log("Data :" + this.state.data)
+        console.log("Local:" + this.state.local)
+        console.log("Detalhe:" + this.state.detalhe)
+         e.preventDefault()
+        }
+
+    render(){
+        return(
+            <div className = "container">
+            <h1 className="h1titulo">Descreva o que você precisa e entre em contato com <br/>prestadores de serviços proximos a você</h1>
+                <div className= "formPesq">
+                <form onSubmit = {this.submeterForm}>
+
+                        <p className = "titulo1">Qual profissional?</p>
+
+                            <select className="prof" value={this.state.profissional} onChange={this.alterarProfissional}>
+                                <option value="Encanador">Encanador</option>
+                                <option value="Desenvolvedor">Desenvolvedor</option>
+                                <option value="Faxineira">Faxineira</option>
+                                <option value="Pedreiro">Pedreiro</option>
+                            </select>
+
+                        <p className = "titulo2">Qual serviço?</p>
+
+
+                            <select className="serv" value={this.state.servico} onChange={this.alterarServico}>
+                                <option value="pisos">Pisos</option>
+                                <option value="site">Site</option>
+                                <option value="limpeza">Limpeza</option>
+                                <option value="parede">Parede</option>
+
+                            </select>
+
+                        <p className = "titulo3">Para quando deseja o serviço?</p>
+
+                        <input className = "dat" type="date" value={this.state.data}onChange={this.alterarData}/>
+
+                        <p className = "titulo4">Onde o serviço será realizado</p>
+
+
+                            <select  className="loc"value={this.state.local} onChange={this.alterarLocal}>
+                                <option value="Casa">Casa</option>
+                                <option value="apartamento">Apartamento</option>
+                                <option value="jardim">Jardim</option>
+                                <option value="Quintal">Quintal</option>
+                            </select>
+
+                            <p className = "titulo5">Detalhe o que você precisa que seja feito</p>
+                            <textarea className="area" rows="4" cols="50" onChange={this.alterarDetalhe}></textarea>
+                        <input className="continuar" type="submit" value="Continuar"/>
+
+                            <input className="continuar" type="submit" value="Continuar"/>
+                            </form>
+
+
+
+
+                        </div>
+                    </div>
+
+
+        )
+    }
+}
+
+ReactDOM.render(<App/>,document.getElementById('root'))
+
+</script>
+</html>
